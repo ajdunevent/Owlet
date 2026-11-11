@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/net/dunevent/Owlet/">
+    <file compressed="true" preprocess="xml-stripblanks" alias="ui/window.ui">window.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="ui/login-page.ui">login-page.ui</file>
+    <file compressed="true">style.css</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/apps/owlet-symbolic.svg">../icons/hicolor/symbolic/apps/net.dunevent.Owlet-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/actions/owlet-refresh-symbolic.svg">icons/owlet-refresh-symbolic.svg</file>
+  </gresource>
+</gresources>

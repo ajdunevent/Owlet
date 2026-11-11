@@ -1,0 +1,22 @@
+[
+ {
+  "created_at": 1794340349315,
+  "default": false,
+  "default_key": null,
+  "household_id": 1,
+  "id": 2,
+  "name": "Bakery",
+  "ordering": 0,
+  "updated_at": 1794340349315
+ },
+ {
+  "created_at": 1794340349308,
+  "default": false,
+  "default_key": null,
+  "household_id": 1,
+  "id": 1,
+  "name": "Dairy",
+  "ordering": 0,
+  "updated_at": 1794340349308
+ }
+]

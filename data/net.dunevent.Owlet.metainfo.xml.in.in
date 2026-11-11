@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>@app_id@</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Owlet</name>
+  <summary>Shopping lists for KitchenOwl</summary>
+  <description>
+    <p>
+      Owlet is a KitchenOwl client built for Linux phones, tablets and desktops. It keeps your
+      household's shopping lists in your pocket, with an interface that adapts from a phone in one
+      hand to a desktop window.
+    </p>
+    <ul>
+      <li>Add items in one line, with a note after a comma, and check them off with a tap</li>
+      <li>Add recently bought items again from a row of suggestions</li>
+      <li>Keep adding and checking off items without a connection; changes sync when you are back online</li>
+      <li>See changes from other household members as they happen</li>
+      <li>Browse the item catalog, and manage lists, categories and households</li>
+    </ul>
+    <p>
+      Owlet needs a KitchenOwl server, version 0.7.10 or newer.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>A shopping list, grouped by category</caption>
+      <image>https://dev.dunevent.net/aj/Owlet/raw/branch/main/data/screenshots/list.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The item catalog</caption>
+      <image>https://dev.dunevent.net/aj/Owlet/raw/branch/main/data/screenshots/catalog.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>On a phone</caption>
+      <image>https://dev.dunevent.net/aj/Owlet/raw/branch/main/data/screenshots/list-mobile.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://dev.dunevent.net/aj/Owlet</url>
+  <url type="bugtracker">https://dev.dunevent.net/aj/Owlet/issues</url>
+  <url type="vcs-browser">https://dev.dunevent.net/aj/Owlet</url>
+  <url type="donation">https://dunevent.net/donate</url>
+  <update_contact>aj@dunevent.net</update_contact>
+  <developer id="net.dunevent">
+    <name translate="no">Owlet contributors</name>
+  </developer>
+  <launchable type="desktop-id">@app_id@.desktop</launchable>
+  <translation type="gettext">@gettext_package@</translation>
+  <content_rating type="oars-1.1"/>
+  <branding>
+    <color type="primary" scheme_preference="light">#a8e6c4</color>
+    <color type="primary" scheme_preference="dark">#16784a</color>
+  </branding>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+  <releases>
+    <release version="0.1.0" date="2026-11-10">
+      <description>
+        <p>The first release: shopping lists, the item catalog, offline changes and live updates.</p>
+      </description>
+    </release>
+  </releases>
+</component>

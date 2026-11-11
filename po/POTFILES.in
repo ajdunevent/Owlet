@@ -1,0 +1,17 @@
+data/net.dunevent.Owlet.desktop.in.in
+data/net.dunevent.Owlet.gschema.xml.in
+data/net.dunevent.Owlet.metainfo.xml.in.in
+data/resources/ui/login-page.blp
+data/resources/ui/window.blp
+src/application.rs
+src/main.rs
+src/store.rs
+src/ui/catalog_page.rs
+src/ui/dialogs.rs
+src/ui/item_dialog.rs
+src/ui/list_page.rs
+src/ui/login_page.rs
+src/ui/manage_dialogs.rs
+src/ui/when.rs
+src/ui/widgets.rs
+src/ui/window.rs

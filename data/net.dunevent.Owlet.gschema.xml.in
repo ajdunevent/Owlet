@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="@gettext_package@">
+  <enum id="@app_id@.TapMode">
+    <value nick="instant" value="0"/>
+    <value nick="select" value="1"/>
+  </enum>
+  <enum id="@app_id@.SortOrder">
+    <value nick="category" value="0"/>
+    <value nick="alphabetical" value="1"/>
+    <value nick="algorithmic" value="2"/>
+  </enum>
+  <enum id="@app_id@.Density">
+    <value nick="regular" value="0"/>
+    <value nick="compact" value="1"/>
+  </enum>
+  <schema id="@app_id@" path="/net/dunevent/Owlet/">
+    <key name="window-width" type="i">
+      <default>900</default>
+      <summary>Window width</summary>
+    </key>
+    <key name="window-height" type="i">
+      <default>720</default>
+      <summary>Window height</summary>
+    </key>
+    <key name="is-maximized" type="b">
+      <default>false</default>
+      <summary>Window maximized state</summary>
+    </key>
+    <key name="server-url" type="s">
+      <default>""</default>
+      <summary>Address of the KitchenOwl server</summary>
+      <description>Empty when signed out. The token is kept in the keyring, not here.</description>
+    </key>
+    <key name="username" type="s">
+      <default>""</default>
+      <summary>Signed-in username</summary>
+    </key>
+    <key name="household" type="i">
+      <default>0</default>
+      <summary>Open household</summary>
+      <description>Its server ID, or 0 for none.</description>
+    </key>
+    <key name="shopping-list" type="i">
+      <default>0</default>
+      <summary>Last opened shopping list</summary>
+      <description>Its server ID, or 0 for the household's default list.</description>
+    </key>
+    <key name="tap-mode" enum="@app_id@.TapMode">
+      <default>"instant"</default>
+      <summary>What tapping a list item's check does</summary>
+      <description>instant checks the item off at once; select marks it for a Check off button.</description>
+    </key>
+    <key name="sort-order" enum="@app_id@.SortOrder">
+      <default>"category"</default>
+      <summary>Order of shopping list items</summary>
+    </key>
+    <key name="density" enum="@app_id@.Density">
+      <default>"regular"</default>
+      <summary>Spacing and text size of shopping list rows</summary>
+    </key>
+    <key name="catalog-show-all" type="b">
+      <default>false</default>
+      <summary>Show KitchenOwl's starter items in the Item Catalog</summary>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,92 @@
+[
+ {
+  "created_at": 1794340348957,
+  "household_id": 1,
+  "id": 1,
+  "items": [
+   {
+    "category": {
+     "created_at": 1794340349315,
+     "default": false,
+     "default_key": null,
+     "household_id": 1,
+     "id": 2,
+     "name": "Bakery",
+     "ordering": 0,
+     "updated_at": 1794340349315
+    },
+    "category_id": 2,
+    "created_at": 1794340349376,
+    "created_by": 1,
+    "default": false,
+    "default_key": null,
+    "description": "",
+    "household_id": 1,
+    "icon": null,
+    "id": 2,
+    "name": "Bread",
+    "ordering": 0,
+    "support": 0.0,
+    "updated_at": 1794340349376
+   },
+   {
+    "category_id": null,
+    "created_at": 1794340349391,
+    "created_by": 1,
+    "default": false,
+    "default_key": null,
+    "description": "",
+    "household_id": 1,
+    "icon": null,
+    "id": 3,
+    "name": "Dill Pickles, Slices",
+    "ordering": 0,
+    "support": 0.0,
+    "updated_at": 1794340349391
+   },
+   {
+    "category": {
+     "created_at": 1794340349308,
+     "default": false,
+     "default_key": null,
+     "household_id": 1,
+     "id": 1,
+     "name": "Dairy",
+     "ordering": 0,
+     "updated_at": 1794340349308
+    },
+    "category_id": 1,
+    "created_at": 1794340349361,
+    "created_by": 1,
+    "default": false,
+    "default_key": null,
+    "description": "2 L",
+    "household_id": 1,
+    "icon": "milk_carton",
+    "id": 1,
+    "name": "Milk",
+    "ordering": 0,
+    "support": 0.0,
+    "updated_at": 1794340349361
+   }
+  ],
+  "name": "Default",
+  "recentItems": [
+   {
+    "category_id": null,
+    "created_at": 1794340349401,
+    "default": false,
+    "default_key": null,
+    "description": "",
+    "household_id": 1,
+    "icon": null,
+    "id": 4,
+    "name": "Cheese",
+    "ordering": 0,
+    "support": 0.0,
+    "updated_at": 1794340349401
+   }
+  ],
+  "updated_at": 1794340348957
+ }
+]

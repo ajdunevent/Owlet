@@ -1,0 +1,33 @@
+{
+ "admin": true,
+ "created_at": 1794340348875,
+ "email": null,
+ "email_verified": false,
+ "id": 1,
+ "last_seen": 1794340349425,
+ "name": "Tester",
+ "oidc_links": [],
+ "photo": null,
+ "tokens": [
+  {
+   "created_at": 1794340348882,
+   "id": 1,
+   "last_used_at": null,
+   "name": "setup",
+   "refresh_token_id": null,
+   "type": "refresh",
+   "updated_at": 1794340348882
+  },
+  {
+   "created_at": 1794340349287,
+   "id": 3,
+   "last_used_at": null,
+   "name": "fixtures",
+   "refresh_token_id": null,
+   "type": "refresh",
+   "updated_at": 1794340349287
+  }
+ ],
+ "updated_at": 1794340349425,
+ "username": "tester"
+}

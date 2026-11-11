@@ -1,0 +1,29 @@
+[package]
+name = "owlet"
+version = "0.1.0"
+authors = ["AJ <aj@dunevent.net>"]
+edition = "2024"
+rust-version = "1.92"
+license = "GPL-3.0-or-later"
+description = "Adaptive KitchenOwl client for GNOME and mobile Linux"
+publish = false
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[dependencies]
+adw = { package = "libadwaita", version = "0.9", features = ["v1_9"] }
+futures-channel = "0.3"
+futures-util = { version = "0.3", default-features = false, features = ["std", "async-await-macro"] }
+gettext-rs = { version = "0.7", features = ["gettext-system"] }
+gio = { version = "0.22", features = ["v2_84"] }
+glib = "0.22"
+gtk = { package = "gtk4", version = "0.11", features = ["v4_20"] }
+libsecret = { version = "0.9", features = ["v0_21"] }
+log = { version = "0.4", features = ["std"] }
+rusqlite = "0.37"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+soup = { package = "soup3", version = "0.9" }
+url = "2"

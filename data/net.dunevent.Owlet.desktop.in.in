@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Owlet
+Comment=Shopping lists for KitchenOwl
+Type=Application
+Exec=owlet
+Terminal=false
+Categories=Utility;GTK;
+Keywords=KitchenOwl;shopping;grocery;groceries;list;
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=@icon@
+StartupNotify=true
+DBusActivatable=true
+X-Purism-FormFactor=Workstation;Mobile;

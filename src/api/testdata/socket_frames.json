@@ -1,0 +1,9 @@
+[
+ "0{\"maxPayload\":1000000,\"pingInterval\":25000,\"pingTimeout\":20000,\"sid\":\"E36yq3C0SrRowS_dAAAC\",\"upgrades\":[]}",
+ "40{\"sid\":\"Z0i-oqI86r-il23aAAAD\"}",
+ "42[\"shoppinglist:add\",{\"shoppinglist\":{\"created_at\":1794343364077,\"household_id\":1,\"id\":2,\"name\":\"Socket Capture\",\"updated_at\":1794343364077}}]",
+ "42[\"shoppinglist_item:add\",{\"item\":{\"category_id\":null,\"created_at\":1794343364099,\"created_by\":1,\"default\":false,\"default_key\":null,\"description\":\"2 L\",\"household_id\":1,\"icon\":null,\"id\":1,\"name\":\"Milk\",\"ordering\":0,\"support\":0.0,\"updated_at\":1794343364099},\"shoppinglist\":{\"created_at\":1794343364077,\"household_id\":1,\"id\":2,\"name\":\"Socket Capture\",\"updated_at\":1794343364077}}]",
+ "42[\"shoppinglist_item:add\",{\"item\":{\"category_id\":null,\"created_at\":1794343364099,\"created_by\":1,\"default\":false,\"default_key\":null,\"description\":\"1 L\",\"household_id\":1,\"icon\":null,\"id\":1,\"name\":\"Milk\",\"ordering\":0,\"support\":0.0,\"updated_at\":1794343364117},\"shoppinglist\":{\"created_at\":1794343364077,\"household_id\":1,\"id\":2,\"name\":\"Socket Capture\",\"updated_at\":1794343364077}}]",
+ "42[\"shoppinglist_item:remove\",{\"item\":{\"category_id\":null,\"created_at\":1794343364099,\"created_by\":1,\"default\":false,\"default_key\":null,\"description\":\"1 L\",\"household_id\":1,\"icon\":null,\"id\":1,\"name\":\"Milk\",\"ordering\":0,\"support\":0.0,\"updated_at\":1794343364117},\"shoppinglist\":{\"created_at\":1794343364077,\"household_id\":1,\"id\":2,\"name\":\"Socket Capture\",\"updated_at\":1794343364077}}]",
+ "42[\"shoppinglist:delete\",{\"shoppinglist\":{\"created_at\":1794343364077,\"household_id\":1,\"id\":2,\"name\":\"Socket Capture\",\"updated_at\":1794343364077}}]"
+]

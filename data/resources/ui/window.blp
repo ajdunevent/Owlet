@@ -1,0 +1,411 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $OwletWindow: Adw.ApplicationWindow {
+  default-width: 900;
+  default-height: 720;
+  width-request: 360;
+  height-request: 294;
+
+  Adw.Breakpoint {
+    condition ("max-width: 600sp")
+
+    setters {
+      split_view.collapsed: true;
+      split_view.show-sidebar: false;
+      switcher_bar.reveal: true;
+      primary_menu.menu-model: narrow_menu;
+    }
+
+    apply => $on_narrow() swapped;
+    unapply => $on_wide() swapped;
+  }
+
+  content: Adw.ToastOverlay toast_overlay {
+    child: Stack stack {
+      transition-type: crossfade;
+
+      StackPage {
+        name: "loading";
+
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            show-title: false;
+          }
+
+          content: Adw.Spinner {
+            halign: center;
+            valign: center;
+            width-request: 48;
+            height-request: 48;
+          };
+        };
+      }
+
+      StackPage {
+        name: "login";
+
+        child: $OwletLoginPage login_page {};
+      }
+
+      StackPage {
+        name: "offline";
+
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {}
+
+          content: Adw.StatusPage offline_status {
+            icon-name: "network-offline-symbolic";
+            description: _("Owlet shows your lists here once it has loaded them.");
+
+            child: Button {
+              label: _("_Retry");
+              use-underline: true;
+              halign: center;
+              action-name: "app.refresh";
+
+              styles [
+                "pill",
+                "suggested-action",
+              ]
+            };
+          };
+        };
+      }
+
+      StackPage {
+        name: "main";
+
+        child: Adw.OverlaySplitView split_view {
+          min-sidebar-width: 240;
+          max-sidebar-width: 300;
+
+          sidebar: Adw.ToolbarView {
+            [top]
+            Adw.HeaderBar {
+              show-title: false;
+
+              [start]
+              Label household_label {
+                ellipsize: end;
+                xalign: 0;
+                margin-start: 6;
+
+                styles [
+                  "heading",
+                ]
+              }
+
+              [end]
+              MenuButton household_button {
+                icon-name: "pan-down-symbolic";
+                tooltip-text: _("Households");
+                menu-model: households_menu;
+
+                accessibility {
+                  label: _("Households");
+                }
+              }
+            }
+
+            content: ScrolledWindow {
+              hscrollbar-policy: never;
+
+              child: ListBox nav_list {
+                selection-mode: single;
+                row-activated => $on_nav_row_activated() swapped;
+
+                styles [
+                  "navigation-sidebar",
+                ]
+              };
+            };
+
+            [bottom]
+            ListBox {
+              selection-mode: none;
+              row-activated => $on_nav_row_activated() swapped;
+
+              styles [
+                "navigation-sidebar",
+              ]
+
+              ListBoxRow {
+                name: "profile";
+
+                child: Box {
+                  spacing: 12;
+
+                  Image {
+                    icon-name: "avatar-default-symbolic";
+                  }
+
+                  Label {
+                    label: _("Profile");
+                    xalign: 0;
+                  }
+                };
+              }
+
+              ListBoxRow {
+                name: "settings";
+
+                child: Box {
+                  spacing: 12;
+
+                  Image {
+                    icon-name: "preferences-system-symbolic";
+                  }
+
+                  Label {
+                    label: _("Settings");
+                    xalign: 0;
+                  }
+                };
+              }
+            }
+          };
+
+          content: Adw.ToolbarView {
+            [top]
+            Adw.HeaderBar {
+              [start]
+              Button refresh_button {
+                tooltip-text: _("Refresh");
+                action-name: "app.refresh";
+
+                styles [
+                  "image-button",
+                ]
+
+                child: Overlay {
+                  child: Image {
+                    icon-name: "owlet-refresh-symbolic";
+                  };
+
+                  [overlay]
+                  Label offline_badge {
+                    label: "!";
+                    visible: false;
+                    can-target: false;
+                    halign: center;
+                    valign: center;
+                    margin-end: 2;
+                    margin-top: 2;
+
+                    styles [
+                      "owlet-offline-badge",
+                    ]
+                  }
+                };
+
+                accessibility {
+                  label: _("Refresh");
+                }
+              }
+
+              [start]
+              Box last_refresh {
+                orientation: vertical;
+                valign: center;
+                visible: false;
+
+                Label {
+                  label: _("Last refresh:");
+                  xalign: 0;
+
+                  styles [
+                    "caption",
+                    "dim-label",
+                  ]
+                }
+
+                Label last_refresh_time {
+                  xalign: 0;
+
+                  styles [
+                    "caption",
+                  ]
+                }
+              }
+
+              title-widget: Stack title_stack {
+                hhomogeneous: false;
+
+                StackPage {
+                  name: "title";
+
+                  child: Adw.WindowTitle page_title {};
+                }
+
+                StackPage {
+                  name: "switcher";
+
+                  child: MenuButton list_switcher {
+                    menu-model: lists_menu;
+                    tooltip-text: _("Switch List");
+
+                    child: Box {
+                      spacing: 6;
+
+                      Label list_switcher_label {
+                        ellipsize: end;
+
+                        styles [
+                          "heading",
+                        ]
+                      }
+
+                      Image {
+                        icon-name: "pan-down-symbolic";
+                      }
+                    };
+
+                    styles [
+                      "flat",
+                    ]
+                  };
+                }
+              };
+
+              [end]
+              MenuButton primary_menu {
+                primary: true;
+                icon-name: "open-menu-symbolic";
+                tooltip-text: _("Main Menu");
+                menu-model: wide_menu;
+
+                accessibility {
+                  label: _("Main Menu");
+                }
+              }
+            }
+
+            content: Adw.ViewStack pages {
+              notify::visible-child-name => $on_page_changed() swapped;
+
+              Adw.ViewStackPage {
+                name: "list";
+                title: _("List");
+                icon-name: "view-list-bullet-symbolic";
+
+                child: $OwletListPage list_page {};
+              }
+
+              Adw.ViewStackPage {
+                name: "catalog";
+                title: _("Items");
+                icon-name: "view-grid-symbolic";
+
+                child: $OwletCatalogPage catalog_page {};
+              }
+
+              Adw.ViewStackPage {
+                name: "recipes";
+                title: _("Recipes");
+                icon-name: "emoji-food-symbolic";
+
+                child: Adw.StatusPage {
+                  icon-name: "emoji-food-symbolic";
+                  title: _("Recipes aren't in Owlet yet");
+                  description: _("They're coming in a future version. Until then, you can use them in the KitchenOwl web app.");
+
+                  child: Button {
+                    label: _("_Open in Web App");
+                    use-underline: true;
+                    halign: center;
+                    action-name: "app.open-web";
+
+                    styles [
+                      "pill",
+                    ]
+                  };
+                };
+              }
+
+              Adw.ViewStackPage {
+                name: "planner";
+                title: _("Planner");
+                icon-name: "x-office-calendar-symbolic";
+
+                child: Adw.StatusPage {
+                  icon-name: "x-office-calendar-symbolic";
+                  title: _("The meal planner isn't in Owlet yet");
+                  description: _("It's coming in a future version. Until then, you can use it in the KitchenOwl web app.");
+
+                  child: Button {
+                    label: _("_Open in Web App");
+                    use-underline: true;
+                    halign: center;
+                    action-name: "app.open-web";
+
+                    styles [
+                      "pill",
+                    ]
+                  };
+                };
+              }
+            };
+
+            [bottom]
+            Adw.ViewSwitcherBar switcher_bar {
+              stack: pages;
+            }
+          };
+        };
+      }
+    };
+  };
+}
+
+menu wide_menu {
+  section {
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "app.shortcuts";
+    }
+
+    item {
+      label: _("_About Owlet");
+      action: "app.about";
+    }
+  }
+}
+
+menu narrow_menu {
+  section {
+    submenu households_submenu {
+      label: _("_Households");
+    }
+  }
+
+  section {
+    item {
+      label: _("_Profile");
+      action: "app.profile";
+    }
+
+    item {
+      label: _("_Settings");
+      action: "app.preferences";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "app.shortcuts";
+    }
+
+    item {
+      label: _("_About Owlet");
+      action: "app.about";
+    }
+  }
+}
+
+menu households_menu {}
+
+menu lists_menu {}

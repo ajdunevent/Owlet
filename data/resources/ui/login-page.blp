@@ -1,0 +1,142 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $OwletLoginPage: Adw.Bin {
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-title: false;
+
+      [end]
+      MenuButton {
+        icon-name: "open-menu-symbolic";
+        tooltip-text: _("Main Menu");
+        menu-model: login_menu;
+
+        accessibility {
+          label: _("Main Menu");
+        }
+      }
+    }
+
+    content: ScrolledWindow {
+      hscrollbar-policy: never;
+
+      child: Adw.Clamp {
+        maximum-size: 420;
+        margin-start: 12;
+        margin-end: 12;
+        margin-top: 24;
+        margin-bottom: 24;
+
+        child: Box form {
+          orientation: vertical;
+          spacing: 24;
+          valign: center;
+
+          Image {
+            icon-name: "net.dunevent.Owlet";
+            pixel-size: 96;
+
+            styles [
+              "icon-dropshadow",
+            ]
+          }
+
+          Box {
+            orientation: vertical;
+            spacing: 6;
+
+            Label {
+              label: _("Welcome to Owlet");
+              wrap: true;
+              justify: center;
+
+              styles [
+                "title-1",
+              ]
+            }
+
+            Label subtitle_label {
+              label: _("Log in to your KitchenOwl server");
+              wrap: true;
+              justify: center;
+
+              styles [
+                "dim-label",
+              ]
+            }
+          }
+
+          Adw.PreferencesGroup {
+            Adw.EntryRow server_row {
+              title: _("Server Address");
+              input-purpose: url;
+              changed => $on_changed() swapped;
+              entry-activated => $on_server_activated() swapped;
+            }
+
+            Adw.EntryRow username_row {
+              title: _("Username");
+              changed => $on_changed() swapped;
+              entry-activated => $on_username_activated() swapped;
+            }
+
+            Adw.PasswordEntryRow password_row {
+              title: _("Password");
+              changed => $on_changed() swapped;
+              entry-activated => $on_password_activated() swapped;
+            }
+          }
+
+          Label error_label {
+            visible: false;
+            wrap: true;
+            justify: center;
+
+            styles [
+              "error",
+            ]
+          }
+
+          Button login_button {
+            halign: center;
+            sensitive: false;
+            clicked => $on_login_clicked() swapped;
+
+            child: Stack login_stack {
+              StackPage {
+                name: "label";
+
+                child: Label {
+                  label: _("_Log In");
+                  use-underline: true;
+                };
+              }
+
+              StackPage {
+                name: "spinner";
+
+                child: Adw.Spinner {};
+              }
+            };
+
+            styles [
+              "pill",
+              "suggested-action",
+            ]
+          }
+        };
+      };
+    };
+  };
+}
+
+menu login_menu {
+  section {
+    item {
+      label: _("_About Owlet");
+      action: "app.about";
+    }
+  }
+}
