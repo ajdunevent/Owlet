@@ -12,6 +12,7 @@ use crate::store::{SortOrder, Store};
 use crate::ui::Window;
 use crate::ui::chip_flow::ChipFlow;
 use crate::ui::item_dialog::{self, OnList};
+use crate::ui::item_icon;
 use crate::ui::widgets;
 
 const MAX_MATCHES: usize = 30;
@@ -276,9 +277,13 @@ impl ListPage {
         imp.selected.borrow_mut().retain(|id| present.contains(id));
 
         let sort = SortOrder::from_settings(&settings);
+        let icons = list
+            .items
+            .iter()
+            .any(|i| item_icon::has(i.item.icon.as_deref()));
         for group in group_items(list.items.clone(), &store.categories(), sort) {
             imp.groups
-                .append(&self.group_widget(&group, compact, select_mode));
+                .append(&self.group_widget(&group, compact, select_mode, icons));
         }
 
         let mut shown = 0;
@@ -307,12 +312,18 @@ impl ListPage {
         );
     }
 
-    fn group_widget(&self, group: &Group, compact: bool, select_mode: bool) -> gtk::Widget {
+    fn group_widget(
+        &self,
+        group: &Group,
+        compact: bool,
+        select_mode: bool,
+        icons: bool,
+    ) -> gtk::Widget {
         let list = gtk::ListBox::new();
         list.set_selection_mode(gtk::SelectionMode::None);
         list.add_css_class("boxed-list");
         for item in &group.items {
-            list.append(&self.item_row(item, compact, select_mode));
+            list.append(&self.item_row(item, compact, select_mode, icons));
         }
         let Some(title) = &group.title else {
             return list.upcast();
@@ -332,7 +343,13 @@ impl ListPage {
         section.upcast()
     }
 
-    fn item_row(&self, entry: &ListItem, compact: bool, select_mode: bool) -> gtk::ListBoxRow {
+    fn item_row(
+        &self,
+        entry: &ListItem,
+        compact: bool,
+        select_mode: bool,
+        icons: bool,
+    ) -> gtk::ListBoxRow {
         let imp = self.imp();
         let check = gtk::CheckButton::new();
         check.add_css_class("selection-mode");
@@ -343,8 +360,12 @@ impl ListPage {
         let selected = select_mode && imp.selected.borrow().contains(&entry.item.id);
         check.set_active(selected);
 
-        // Reserved for item icons; stays hidden until icon artwork is bundled.
-        let icon = gtk::Image::builder().pixel_size(24).visible(false).build();
+        let icon = gtk::Image::builder()
+            .pixel_size(if compact { 20 } else { 24 })
+            .valign(gtk::Align::Center)
+            .build();
+        icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+        item_icon::show(&icon, entry.item.icon.as_deref(), icons);
 
         let text = gtk::Box::new(gtk::Orientation::Vertical, 2);
         text.set_hexpand(true);
@@ -508,8 +529,6 @@ impl ListPage {
     fn recent_chip(&self, entry: &ListItem) -> gtk::Button {
         let content = gtk::Box::new(gtk::Orientation::Horizontal, 6);
         content.append(&gtk::Image::from_icon_name("list-add-symbolic"));
-        // Reserved for item icons; stays hidden until icon artwork is bundled.
-        content.append(&gtk::Image::builder().pixel_size(16).visible(false).build());
         content.append(
             &gtk::Label::builder()
                 .label(&entry.item.name)

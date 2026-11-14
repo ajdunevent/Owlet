@@ -117,6 +117,12 @@ mod payloads {
             ..Default::default()
         };
         assert_eq!(set_category.payload(), json!({ "category": { "id": 4 } }));
+
+        let clear_icon = ItemUpdate {
+            icon: Some(None),
+            ..Default::default()
+        };
+        assert_eq!(clear_icon.payload(), json!({ "icon": null }));
     }
 
     #[test]
@@ -379,7 +385,7 @@ mod live {
             .update_item(
                 milk.id,
                 &ItemUpdate {
-                    icon: Some("milk_carton".into()),
+                    icon: Some(Some("milk_carton".into())),
                     ..Default::default()
                 },
             )
@@ -409,6 +415,17 @@ mod live {
             .unwrap();
         assert!(uncategorised.category.is_none());
         assert_eq!(uncategorised.icon.as_deref(), Some("milk_carton"));
+        let without_icon = client
+            .update_item(
+                milk.id,
+                &ItemUpdate {
+                    icon: Some(None),
+                    ..Default::default()
+                },
+            )
+            .await
+            .unwrap();
+        assert!(without_icon.icon.is_none());
 
         let duplicate = client
             .create_item(household, "Vollmilch", None)
@@ -463,6 +480,10 @@ mod live {
                 .iter()
                 .all(|i| i.id != loaf.id)
         );
+
+        // Leaving these behind makes the next run's create_item fail on the duplicate name.
+        client.delete_item(milk.id).await.unwrap();
+        client.delete_category(dairy.id).await.unwrap();
     }
 
     async fn list(client: &Client, household: i64, id: i64) -> ShoppingList {

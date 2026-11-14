@@ -28,6 +28,20 @@ OWLET_TEST_SERVER=http://127.0.0.1:5000 OWLET_TEST_USER=tester OWLET_TEST_PASSWO
 
 The fixtures in `src/api/testdata/` come from a local KitchenOwl 0.7.10 test server.
 
+## Item icons
+
+Item icons are KitchenOwl's Icons8 set, fetched from Icons8 as 100 px PNGs, which Icons8 allows free with attribution:
+
+```sh
+build-aux/fetch-item-icons.py
+```
+
+It reads the icon names from `data/item-icons.txt` (taken from KitchenOwl's `item_icons.dart`), saves each as `data/resources/item-icons/<name>.png`, rewrites `item-icons.gresource.xml` to match, keeps files already present unless given `--force`, and lists any it could not fetch.
+
+Most names match an iOS-style icon on Icons8 directly. Where KitchenOwl's drawing has another name on Icons8, the second field in `data/item-icons.txt` gives it, or `id:<id>` for a drawing from another style. KitchenOwl's pasta, penne, tofu and trash_bag drawings are not on Icons8, and its icon folder may not be reused, so Owlet draws its own in `data/item-icon-drawings/`. Names marked `drawn` are rendered from there with `rsvg-convert`; draw them on a 50 px grid with 2 px round strokes to match the iOS style.
+
+The icons ship as a separate `item-icons.gresource`. They are black on transparency and drawn in the text colour, so they follow dark mode.
+
 ## Layout
 
 | Path | Contents |

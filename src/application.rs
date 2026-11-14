@@ -155,6 +155,10 @@ impl Application {
             .license_type(gtk::License::Gpl30)
             .comments(gettext("Shopping lists for KitchenOwl"))
             .build();
+        dialog.add_acknowledgement_section(
+            Some(&gettext("Item Icons")),
+            &["Icons8 https://icons8.com"],
+        );
         if let Some(window) = self.active_window() {
             dialog.present(Some(&window));
         }

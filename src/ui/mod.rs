@@ -3,6 +3,7 @@ mod chip_flow;
 pub mod compact_font;
 pub mod dialogs;
 pub mod item_dialog;
+mod item_icon;
 mod list_page;
 mod login_page;
 pub mod manage_dialogs;

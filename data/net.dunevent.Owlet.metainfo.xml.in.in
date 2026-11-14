@@ -60,6 +60,11 @@
     <control>touch</control>
   </supports>
   <releases>
+    <release version="0.2.0" date="2026-11-13">
+      <description>
+        <p>Items show the same icons as in KitchenOwl, and the item editor can change them.</p>
+      </description>
+    </release>
     <release version="0.1.0" date="2026-11-10">
       <description>
         <p>The first release: shopping lists, the item catalog, offline changes and live updates.</p>

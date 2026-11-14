@@ -17,7 +17,7 @@ use gtk::prelude::*;
 use gtk::{gio, glib};
 
 use self::application::Application;
-use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
+use self::config::{GETTEXT_PACKAGE, ITEM_ICONS_FILE, LOCALEDIR, RESOURCES_FILE};
 
 fn main() -> glib::ExitCode {
     init_logging();
@@ -30,6 +30,10 @@ fn main() -> glib::ExitCode {
 
     let resources = gio::Resource::load(RESOURCES_FILE).expect("Could not load resources");
     gio::resources_register(&resources);
+    match gio::Resource::load(ITEM_ICONS_FILE) {
+        Ok(icons) => gio::resources_register(&icons),
+        Err(err) => log::warn!("Item icons unavailable: {err}"),
+    }
 
     glib::set_application_name(&gettext("Owlet"));
 

@@ -61,4 +61,6 @@ Owlet is an independent project and isn't affiliated with KitchenOwl.
 
 GPL-3.0-or-later
 
+Item icons by [Icons8](https://icons8.com), the same set KitchenOwl uses.
+
 The refresh icon is `view-refresh-symbolic` from the [Adwaita icon theme](https://gitlab.gnome.org/GNOME/adwaita-icon-theme) by the GNOME Project, licensed LGPL-3.0-or-later or CC-BY-SA-3.0.

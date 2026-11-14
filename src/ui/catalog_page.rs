@@ -5,7 +5,7 @@ use gtk::{gio, glib};
 
 use crate::api::Item;
 use crate::store::{SortOrder, Store};
-use crate::ui::{item_dialog, widgets};
+use crate::ui::{item_dialog, item_icon, widgets};
 
 mod imp {
     use super::*;
@@ -215,6 +215,7 @@ impl CatalogPage {
             }
         });
 
+        let icons = items.iter().any(|i| item_icon::has(i.icon.as_deref()));
         let mut current: Option<(Option<(i64, String)>, gtk::ListBox)> = None;
         for item in &items {
             let key = if by_category {
@@ -249,6 +250,10 @@ impl CatalogPage {
                 .title(glib::markup_escape_text(&item.name))
                 .activatable(store.online())
                 .build();
+            let icon = gtk::Image::builder().pixel_size(24).build();
+            icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+            item_icon::show(&icon, item.icon.as_deref(), icons);
+            row.add_prefix(&icon);
             row.add_suffix(&self.add_to_list_button(item, &store));
             let edited = item.clone();
             row.connect_activated(glib::clone!(

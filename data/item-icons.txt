@@ -1,0 +1,406 @@
+# KitchenOwl item icon names, one per line, from kitchenowl/lib/item_icons.dart.
+# A second field names the Icons8 icon when it differs: an ios name, id:<id> for another style,
+# or "drawn" for a drawing of Owlet's own in data/item-icon-drawings.
+almond
+ammo bullet-2
+antiseptic_cream
+apple
+apple_jam
+appliances
+apricot
+arduino_uno_board
+aroma aroma--v2
+asparagus
+avocado
+baby_bottle
+backpack
+bacon
+baguette
+banana
+bandage
+barber_brush
+barley
+basil
+basketball
+beach_ball
+beard_trimmer
+beef steak-medium
+beer_bottle
+beeswax
+beet
+bell
+bento
+berry_jam
+bib
+bicycle_floor_pump pump-breast
+bicycle_helmet
+birdhouse
+biscuits
+blade
+blankie
+blender
+blister_pack
+blueberry
+bobbin
+bobby_pin
+box_tissue
+brazil_nut
+bread
+bread_loaf
+brezel bavarian-pretzel
+broccoli
+broom
+burrito
+butter
+cabbage
+cake
+camera
+campfire
+can_soup
+candle christmas-candle
+candy_cane
+car_battery
+carrot
+cauliflower
+cd
+celery
+cereal
+chain
+champagne_bottle
+charcoal
+cheese
+cheesecake
+cherry
+chia_seeds
+chicken
+chili_pepper
+chocolate_bar
+chocolate_spread
+christmas_ball
+christmas_tree
+cigar
+cinnamon_roll
+cinnamon_sticks
+citrus
+cleaning_a_surface
+clew
+coal
+cocktail_shaker
+coconut
+coconut_milk
+coffee_beans coffee-beans-
+coffee_capsule
+cola
+comb
+confetti
+contraception condom-package
+cookbook
+cookie_jar
+cookies
+corkscrew
+corn
+crab
+croissant
+cucumber
+cupcake
+cutting_board
+cycling cycling-road
+date_fruit id:o1R8QLhAZOT5
+defrosting
+deodorant_stick
+dessert
+dim_sum
+dispenser shampoo-dispenser
+dog_bone
+doggy_bag
+dolmades
+doughnut
+dowel
+dragon_fruit
+drawing
+dressing
+dumplings
+durian
+eco_friendly_cleaning eco-cleaning
+eggplant
+eggs
+energy_drink
+eraser
+eye_shadows
+eyelash
+face_powder
+facemask
+fire_alarm fire-alarm-button
+fire_extinguisher
+firework
+fish_fillet filleted-fish
+fish_food
+fishing
+flat_alkaline_battery flat-alcaline-battery
+flat_mailer
+flax_seeds
+flour sack-of-flour
+flowers bridal-bouquet
+fondue
+fork
+foundation_makeup
+french_fries
+frisbee_disk
+furniture
+garlic
+gas
+gas_bottle
+ginger
+gingerbread_house
+glasses
+glue
+grains_of_rice
+grapes
+guacamole
+hair_brush
+hair_clip
+hanger
+hanging_frame
+hazelnut
+herbicide
+honey
+honeycombs
+hot_dog
+ice_cream_cone
+inhaler
+insecticide deadly-spray
+insulin_pen
+jam
+jamon
+kebab
+ketchup
+kimchi_mandu
+kiwi
+knife
+kohlrabi
+lantern
+lasagna
+leather
+leek
+lentil
+lettuce
+life_jacket buoyancy-compensator
+light
+lighter
+lip_gloss
+lipstick
+lychee
+macaron
+magazine
+mail secured-letter
+makeup_brush cosmetic-brush
+mango id:JEPPmHfgj852
+mangosteen
+marker_pen
+mascara
+matches
+mayonnaise
+measuring_cup
+meat steak-rare
+medical_bag survival-bag
+melon
+mens_underwear
+menstrual_cup id:QVX739DY5gx5
+micro_sd
+milk_carton
+milkshake
+mixer
+mosquito_net
+mouse_trap
+mozzarella id:Be6TEucQM3kn
+mushroom
+mustard
+naan
+nachos
+nail
+nail_polish
+nano_sim_card
+nappy
+natural_food
+necklace
+needle
+nonya_kueh
+noodles
+nut
+oat_milk
+octopus
+olive
+olive_oil
+omlette
+onion
+orange
+orchid
+pacifier
+pad id:p6eXugYAGXPl
+paella
+paint_brush
+paint_bucket
+papaya
+paper
+paper_clamp
+paprika
+parcel send-box
+pasta drawn
+pastry_bag
+pastry_spatula
+peanuts
+pear
+peas
+pecan
+pelmen
+pencil
+penne drawn
+perfume
+perfume_bottle
+petrol
+pharma
+pie
+pig
+pillow
+pills
+pineapple
+pizza_cutter
+plastic
+plastic_bottle alcohol-bottle
+plate
+plum
+pomegranate
+popcorn
+potato
+potato_chips
+potted_plant
+poultry_leg
+powder
+power_strip
+prawn
+processor
+pumpkin
+quesadilla
+quill_with_ink
+racket badminton-racquet
+radish
+rambutan
+raspberry
+rattle
+razor modern-razor
+resistor
+rice_vinegar
+rolled_oats
+rolling_pin
+romper
+rope
+rose
+rubber_gloves
+rugby
+sabzeh
+safety_pin
+safety_vest safety-vest-1
+salami
+salami_pizza
+salt_shaker
+samosa
+sandwich
+sauce
+sausage
+sausages
+saw_blade
+scotch_tape sticky-tape
+screw
+screwdriver
+scrunchy
+seed_packet paper-bag-with-seeds
+sesame
+sewing_button button
+shampoo
+shaving shaving-cream
+sheets
+shellfish
+shoe_polish
+shopping_bag
+shuttlecock shuttercock
+skein_of_yarn
+sleeping_bag
+smoking
+snail
+snorkel mask-snorkel
+soap
+soap_bubble cosmetic-soap
+soap_dispenser
+soccer_ball football2
+soursop
+soy
+soy_sauce
+spatula
+spice pepper-shaker
+spinach
+sponge
+sport
+sport_bottle
+spray deodorant-spray
+squash
+stapler
+steak
+sticker
+straight_razor
+strawberry
+sugar
+sugarcane
+suitcase
+supplement_bottle
+sushi
+sweet_potato
+sweetener
+swiss_army_knife
+syringe
+t_shirt
+taco
+tampon id:CaXHSsRuHDRu
+tangelo
+tapas
+tape micropore-tape
+tea
+tea_tin
+tetra_pak
+ticket
+tin_can
+toaster
+toaster_oven
+tofu drawn
+toilet_paper
+tomato
+tooth
+tooth_cleaning_kit
+toothpaste
+topping burger-dip
+towel
+transistor
+trash_bag drawn
+trousers
+tube cream-tube
+tupperware
+turkey thanksgiving
+usb_connector
+vodka
+washing_dishes
+water
+watering_can
+watermelon
+wet
+wheat
+whipped_cream
+white_beans
+wine_bottle
+wipes
+wood
+wood_chips
+worcestershire_sauce
+wrap
+yarn knitting-ball
+yoga_mat sleeping-mat
+yogurt id:g0xWeLjtOkeu
+zipper

@@ -28,7 +28,8 @@ pub struct ItemUpdate {
     pub name: Option<String>,
     /// `Some(None)` removes the category.
     pub category: Option<Option<i64>>,
-    pub icon: Option<String>,
+    /// `Some(None)` removes the icon.
+    pub icon: Option<Option<String>>,
     /// Folds the item with this ID into the updated one.
     pub merge_item_id: Option<i64>,
 }

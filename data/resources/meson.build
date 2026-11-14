@@ -28,3 +28,12 @@ resources = gnome.compile_resources(
   install_dir: pkgdatadir,
   dependencies: blueprints,
 )
+
+item_icons = gnome.compile_resources(
+  'item-icons',
+  'item-icons/item-icons.gresource.xml',
+  gresource_bundle: true,
+  source_dir: meson.current_source_dir() / 'item-icons',
+  install: true,
+  install_dir: pkgdatadir,
+)
